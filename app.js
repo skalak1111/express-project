@@ -49,6 +49,14 @@ app.put('/users/:id', function(req, res) {
     res.send(user);
 })
 
+app.delete('/users/:id', function(req, res) {
+    const user = users.find(user => user.id == parseInt(req.params.id)) 
+    if(!user) return res.status(404).send("not found");
+    const index = users.indexOf(user);
+    users.splice(index, 1);
+    res.send(user);
+})
+
 app.listen(3000, function() {
     console.log("listening on port 3000..")
 })

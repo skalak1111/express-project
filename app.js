@@ -43,6 +43,11 @@ app.post('/users', function(req, res) {
     res.send(user);
 })
 
+app.put('/users/:id', function(req, res) {
+    const user = users.find(user => user.id == parseInt(req.params.id)) 
+    user.name = req.body.name;
+    res.send(user);
+})
 
 app.listen(3000, function() {
     console.log("listening on port 3000..")
